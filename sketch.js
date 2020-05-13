@@ -13,19 +13,23 @@ function setup() {
 
     light = new Light(100, 200);
 
-    for (let i = 0; i < 5; i++) {
+    walls.push(new Boundary(100, 300, 120, 250));
+    walls.push(new Boundary(180, 250, 200, 300));
+    walls.push(new Boundary(180, 250, 120, 250));
 
-        let x1 = random(canvas_width);
-        let y1 = random(canvas_height);
-        let x2 = random(canvas_width);
-        let y2 = random(canvas_height);
+    walls.push(new Boundary(130, 225, 150, 175));
+    walls.push(new Boundary(170, 225, 150, 175));
+    walls.push(new Boundary(130, 225, 170, 225));
 
-        walls.push(new Wall(x1, y1, x2, y2));
-    }
-    walls.push(new Wall(0, 0, canvas_width, 0));
-    walls.push(new Wall(0, 0, 0, canvas_height));
-    walls.push(new Wall(canvas_width, 0, canvas_width, canvas_height));
-    walls.push(new Wall(0, canvas_height, canvas_width, canvas_height));
+    walls.push(new Boundary(225, 300, 225, 225));
+    walls.push(new Boundary(225, 225, 275, 300));
+    walls.push(new Boundary(275, 250, 225, 175));
+    walls.push(new Boundary(275, 175, 275, 250));
+
+    walls.push(new Boundary(0, 0, canvas_width, 0));
+    walls.push(new Boundary(0, 0, 0, canvas_height));
+    walls.push(new Boundary(canvas_width, 0, canvas_width, canvas_height));
+    walls.push(new Boundary(0, canvas_height, canvas_width, canvas_height));
 }
 
 function draw() {
@@ -42,7 +46,7 @@ function draw() {
     light.update(walls);
     light.draw();
 
-    // for (let wall of walls) {
-    //     wall.draw();
-    // }
+    for (let wall of walls) {
+        wall.draw();
+    }
 }
